@@ -12,7 +12,7 @@ hashtable_t *hash_create(unsigned int size)
     return NULL;
   new_table = malloc(sizeof(hashtable_t));
   new_table->table = malloc(size*sizeof(node_t*));
-  for(unsigned int i = 0; i < size; i++)
+  for(int i = 0; i < size; i++)
      new_table->table[i] = NULL;
   new_table->size = size;
   return new_table;
@@ -20,7 +20,7 @@ hashtable_t *hash_create(unsigned int size)
 
 void hash_destroy(hashtable_t *ht, void (*fp)(void *data))
 {
-  for(unsigned int i = 0; i < ht->size;i++) {
+  for(int i = 0; i < ht->size;i++) {
     if( ht->table[i] != NULL) {
       node_t  *ptr = ht->table[i];
       list_destroy(&(ptr),fp);
